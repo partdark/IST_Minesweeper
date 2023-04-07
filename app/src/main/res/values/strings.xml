@@ -4,6 +4,7 @@
     <string name="smiley">😃</string>
     <string name="flag">🚩</string>
     <string name="bomb">💣</string>
+    <string name="finger">👌</string>
     <string name="rows">Размерность</string>
       <string name="mines">Количество бомб</string>
     <string name="hello">IST Minesweeper</string>

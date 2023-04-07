@@ -6,13 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.core.widgets.Helper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecyclerAdapter.MineTileViewHolder> {
     private List<Cell> cells;
+
+
     private OnCellClickListener listener;
 
     public MineGridRecyclerAdapter(List<Cell> cells, OnCellClickListener listener) {
@@ -45,6 +49,7 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
 
     class MineTileViewHolder extends RecyclerView.ViewHolder {
         TextView valueTextView;
+        private int contentView;
 
         public MineTileViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,9 +63,15 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+
                     listener.cellClick(cell);
+
+
                 }
             });
+
+
 
             if (cell.isRevealed()) {
                 if (cell.getValue() == Cell.BOMB) {

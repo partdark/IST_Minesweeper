@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class MineGrid {
-    private List<Cell> cells;
-    private int size;
+    private static List<Cell> cells;
+    private static int size;
 
     public MineGrid(int size) {
         this.size = size;
@@ -17,6 +17,7 @@ public class MineGrid {
     }
 
     public void generateGrid(int totalBombs) {
+      //  totalBombs++;
         int bombsPlaced = 0;
         while (bombsPlaced < totalBombs) {
             int x = new Random().nextInt(size);
@@ -46,7 +47,7 @@ public class MineGrid {
         }
     }
 
-    public Cell cellAt(int x, int y) {
+    public static Cell cellAt(int x, int y) {
         if (x < 0 || x >= size || y < 0 || y >= size) {
             return null;
         }

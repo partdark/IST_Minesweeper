@@ -2,6 +2,7 @@ package com.example.istminesweeper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MineSweeperGame {
     private MineGrid mineGrid;
@@ -12,6 +13,11 @@ public class MineSweeperGame {
     private int numberBombs;
     private boolean timeExpired;
 
+    public  static int count = 0;
+    int number = numberBombs;
+
+
+
     public MineSweeperGame(int size, int numberBombs) {
         this.gameOver = false;
         this.flagMode = false;
@@ -20,10 +26,17 @@ public class MineSweeperGame {
         this.flagCount = 0;
         this.numberBombs = numberBombs;
         mineGrid = new MineGrid(size);
-        mineGrid.generateGrid(numberBombs);
+        setter(this.numberBombs);
+           mineGrid.generateGrid(numberBombs);
+        count = 0;
+
+    }
+    void setter (int count){
+        number = count;
     }
 
     public void handleCellClick(Cell cell) {
+
         if (!gameOver && !isGameWon() && !timeExpired && !cell.isRevealed()) {
             if (clearMode) {
                 clear(cell);
@@ -33,12 +46,16 @@ public class MineSweeperGame {
         }
     }
 
+
     public void clear(Cell cell) {
+
         int index = getMineGrid().getCells().indexOf(cell);
+        if (cell.isFlagged() && !(GameActivity.isflaget()))
+        {return;}
         getMineGrid().getCells().get(index).setRevealed(true);
 
         if (cell.getValue() == Cell.BOMB) {
-            gameOver = true;
+                gameOver = true;
         } else if (cell.getValue() == Cell.BLANK) {
             List<Cell> toClear = new ArrayList<>();
             List<Cell> toCheckAdjacents = new ArrayList<>();
@@ -70,6 +87,7 @@ public class MineSweeperGame {
                 c.setRevealed(true);
             }
         }
+   //     if (count ==1) mineGrid.generateGrid(1);
     }
 
     public void flag(Cell cell) {
@@ -103,6 +121,7 @@ public class MineSweeperGame {
         flagMode = !flagMode;
     }
 
+
     public void outOfTime() {
         timeExpired = true;
     }
@@ -124,6 +143,7 @@ public class MineSweeperGame {
     }
 
     public int getFlagCount() {
+
         return flagCount;
     }
 

@@ -23,7 +23,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
 
         }
     };
-    public static final long TIMER_LENGTH = 999000L;    // 999 seconds in milliseconds
+    public static long TIMER_LENGTH = 999000L;    // 999 seconds
     public static  int BOMB_COUNT = 10;
     public static  int GRID_SIZE = 10;
 
@@ -32,11 +32,15 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     private MineGridRecyclerAdapter mineGridRecyclerAdapter;
     private RecyclerView grid;
     private TextView smiley, timer, flag, flagsLeft;
-    private MineSweeperGame mineSweeperGame;
+    public static MineSweeperGame mineSweeperGame;
     private CountDownTimer countDownTimer;
     private int secondsElapsed;
     private boolean timerStarted;
 
+    public static boolean isflaget()
+    {
+        return  mineSweeperGame.isFlagMode();
+    }
 
 
 
@@ -46,9 +50,12 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         Bundle extras = getIntent().getExtras();
         int  count_of_size =Integer.parseInt( extras.getString("size"));
         int  count_of_mines =Integer.parseInt( extras.getString("mines"));
+        int  count_of_time =Integer.parseInt( extras.getString("time"));
+        TIMER_LENGTH = count_of_time * 1000;
         grid = findViewById(R.id.activity_main_grid);
         GRID_SIZE = count_of_size;
         BOMB_COUNT = count_of_mines;
@@ -59,7 +66,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
 
         timer = findViewById(R.id.activity_main_timer);
         timerStarted = false;
-        countDownTimer = new CountDownTimer(TIMER_LENGTH, 1000) {
+        countDownTimer = new CountDownTimer (TIMER_LENGTH, 1000) {
             public void onTick(long millisUntilFinished) {
                 secondsElapsed += 1;
                 timer.setText(String.format("%03d", secondsElapsed));
@@ -76,7 +83,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         flagsLeft = findViewById(R.id.activity_main_flagsleft);
 
         mineSweeperGame = new MineSweeperGame(GRID_SIZE, BOMB_COUNT);
-        flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() - mineSweeperGame.getFlagCount()));
+        flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() ));
         mineGridRecyclerAdapter = new MineGridRecyclerAdapter(mineSweeperGame.getMineGrid().getCells(), this);
         grid.setAdapter(mineGridRecyclerAdapter);
 
@@ -90,7 +97,9 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
                 countDownTimer.cancel();
                 secondsElapsed = 0;
                 timer.setText(R.string.default_count);
-                flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() - mineSweeperGame.getFlagCount()));
+                flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() ));
+                flag = findViewById(R.id.activity_main_flag);
+                flag.setText(R.string.flag);
             }
         });
 
@@ -100,14 +109,16 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
             public void onClick(View view) {
                 mineSweeperGame.toggleMode();
                 if (mineSweeperGame.isFlagMode()) {
-                    GradientDrawable border = new GradientDrawable();
-                    border.setColor(0xFFFFFFFF);
-                    border.setStroke(1, 0xFF000000);
-                    flag.setBackground(border);
+                    // GradientDrawable border = new GradientDrawable();
+                    //border.setColor(0xFF0000);
+                 //   border.setStroke(1, 0xFF000000);
+                  //  flag.setBackground(border);
+                    flag.setText(R.string.finger);
                 } else {
-                    GradientDrawable border = new GradientDrawable();
-                    border.setColor(0xFFFFFFFF);
-                    flag.setBackground(border);
+                  //  GradientDrawable border = new GradientDrawable();
+                  //  border.setColor(0xFFFFFFFF);
+                  //  flag.setBackground(border);
+                    flag.setText(R.string.flag);
                 }
             }
         });
@@ -115,9 +126,10 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
 
     @Override
     public void cellClick(Cell cell) {
+
         mineSweeperGame.handleCellClick(cell);
 
-        flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() - mineSweeperGame.getFlagCount()));
+        flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() ));
 
         if (!timerStarted) {
             countDownTimer.start();
