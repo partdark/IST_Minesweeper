@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/miner"
+        android:layout_width="fill_parent"
+
+        android:layout_height="fill_parent"
+        android:theme="@android:style/Theme.Black.NoTitleBar"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+        <TextView
+
+            android:id="@+id/textView1"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:text="@string/rows"
+            android:textColor="#3F51B5"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <TextView
+
+        android:id="@+id/minesCount"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Введите количество бомб"
+        android:text="@string/mines"
+        android:textColor="#77BA54"
+        android:textColorHint="#DFDCBB15"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSize" />
+
+    <EditText
+        android:id="@+id/editNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Введите количество бомб"
+        android:inputType="number"
+        android:textColorHint="#E1B940"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minesCount" />
+
+    <EditText
+
+        android:id="@+id/editSize"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:hint="Введите размерность"
+        android:inputType="number"
+        android:textColorHint="#A9C64FBA"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+
+            android:id="@+id/textView"
+
+            android:layout_width="fill_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/hello"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="264dp"
+        android:text="Новая игра"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNumber" />
+</androidx.constraintlayout.widget.ConstraintLayout>
