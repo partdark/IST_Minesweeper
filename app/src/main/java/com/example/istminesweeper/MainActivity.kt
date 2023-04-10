@@ -3,8 +3,11 @@ package com.example.istminesweeper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity  : AppCompatActivity() {
@@ -21,6 +24,12 @@ class MainActivity  : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+      //  val inflater = menuInflater
+       // inflater.inflate(R.menu.menu_main, menu)
+      //  val popupMenu = androidx.appcompat.widget.PopupMenu(this, imageView)
+      //  popupMenu.inflate(R.menu.popupmenu)
+
+
         size_count.setText("7")
       mines_count.setText("7")
 time_count.setText(time.toString())
@@ -56,6 +65,24 @@ time_count.setText(time.toString())
         }
     }
 
+
+    override  fun onCreateOptionsMenu(menu : Menu?) : Boolean    {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu) }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
+        when (item.itemId) {
+            R.id.big -> {
+                Toast.makeText(applicationContext, "вывод информации о приложении", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, Activity_Info::class.java)
+                startActivity(intent)
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
+        }
 
     private fun checker()
             : Int {
