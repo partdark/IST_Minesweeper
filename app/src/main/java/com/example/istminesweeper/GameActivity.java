@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -60,7 +59,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         GRID_SIZE = count_of_size;
         BOMB_COUNT = count_of_mines;
         grid.setLayoutManager(new GridLayoutManager(this, GRID_SIZE));
-            Button back = findViewById(R.id.button2);
+            Button back = findViewById(R.id.button_back_to_main_menu);
             back.setOnClickListener(btnClick);
 
 
@@ -80,7 +79,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
             }
         };
 
-        flagsLeft = findViewById(R.id.activity_main_flagsleft);
+        flagsLeft = findViewById(R.id.activity_bomb_count);
 
         mineSweeperGame = new MineSweeperGame(GRID_SIZE, BOMB_COUNT);
         flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() ));
@@ -98,12 +97,12 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
                 secondsElapsed = 0;
                 timer.setText(R.string.default_count);
                 flagsLeft.setText(String.format("%03d", mineSweeperGame.getNumberBombs() ));
-                flag = findViewById(R.id.activity_main_flag);
+                flag = findViewById(R.id.button_flag);
                 flag.setText(R.string.flag);
             }
         });
 
-        flag = findViewById(R.id.activity_main_flag);
+        flag = findViewById(R.id.button_flag);
         flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

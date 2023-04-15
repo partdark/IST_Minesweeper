@@ -7,7 +7,7 @@
     <string name="finger">👌</string>
     <string name="rows">Размерность</string>
     <string name="mines">Количество бомб</string>
-    <string name="hello">IST Minesweeper</string>
+    <string name="hello">Параметры игры</string>
     <string name="info">Info</string>
     <string name="title_activity_info">Info</string>
     <!-- Strings used for fragments for navigation -->
@@ -15,8 +15,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="button_back">Вернуться</string>
+    <string name="textview_about_game" >IST Minesweeper - приложение в стилистике игры сапёр с задаваемыми параметрами.</string>
+    <string name="textview_about_work">Проект создан в рамках учебной практики по дисциплине «Разработка мобильных приложений».</string>
+    <string name="textview_about_author">Преподаватель: Тупицин К. М.\nРаботу выполнил: Мальцев М. А.</string>
 </resources>

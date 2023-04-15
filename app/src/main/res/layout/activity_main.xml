@@ -11,21 +11,22 @@
         tools:context=".MainActivity">
 
 
-        <TextView
+    <TextView
 
-            android:id="@+id/textView1"
+        android:id="@+id/textView1"
 
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
 
-            android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
 
-            android:layout_marginTop="20dp"
-            android:text="@string/rows"
-            android:textColor="#3F51B5"
-            android:textSize="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/rows"
+        android:textColor="#3F51B5"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     <TextView
@@ -36,6 +37,7 @@
 
         android:layout_height="wrap_content"
 
+        android:layout_marginStart="10dp"
         android:hint="Введите количество бомб"
         android:text="@string/mines"
         android:textColor="#77BA54"
@@ -107,7 +109,9 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="Время"
+        android:textColor="#780000"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
